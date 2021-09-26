@@ -1,10 +1,10 @@
-
 # Lineage on cedric
 
 - **Date**: 2021-09-22
 - **Topic**: Installing LineageOS 18.1 on Motorola Moto G G5 "cedric"
+- **Outcome**: Mostly successful but had broken wireless (IMEI 0/0). See fix described in [cedric-lineage-20210925.md](cedric-lineage-20210925.md).
 
-## Versions that worked
+## Versions that worked†
 
 | Item | Version | File | sha256 |
 |-|-|-|-|
@@ -12,6 +12,8 @@
 | **Firmware** | OPP28.85-19-4-2 | `CEDRIC_RETAIL_8.1.0_OPP28.85-19-4-2_cid50_subsidy-DEFAULT_regulatory-DEFAULT_CFC.xml.zip` | `ff11d01ede235bd49281bddd64a6032732691fa496000ae80d3fdcc86d53cac9` |
 | **Recovery** | LineageOS recovery nightly build 202010909 | `lineage-18.1-20210909-recovery-cedric.img` | `f3d27a7158e5bb763ac4a8bdd3d9d724eecf58fbf9bc0d5040c739df995fbff9` |
 | **OS** | Lineage OS 18.1 nightly build 20210909 | `lineage-18.1-20210909-nightly-cedric-signed.zip` | `b092cc1594f4cffbcdb930b3fdd3debfbf933b95193399de2fb90314e8cf6bb7` |
+
+†: *By worked I mean I was able to get it set up and working with WiFi. But when I put in my carrier SIM I realized the radio was broken as both SIM slots were reporting IMEI=0 (IMEI 0/0). I was able to fix this: see [cedric-lineage-20210925.md](cedric-lineage-20210925.md).*
 
 ## tl;dr
 
@@ -154,17 +156,21 @@ As is typical of XDA experts this user had a fairly terse writing style that ass
 	- I looked at the timestamps on the directories and took one of the more recent ones.
 	- This happened to coincide with the directory `RETAIL/`, which in this case contained the ZIP archive which worked for me.
 	- Don't worry about the ZIP archive file size being enormous (1.5 GB). This is expected.
-3. Unzip the archive install it on the phone from Fastboot mode using the commands below, which are exactly the ones listed by my savior on the XDA developer forums.
+3. Unzip the archive install it on the phone from Fastboot mode using the commands below, which are roughly the ones listed by my savior on the XDA developer forums, but reordered to follow the order in the firmware archive's `flashfile.xml`.
 
 ```
+fastboot getvar max-sparse-size
 fastboot oem fb_mode_set
 fastboot flash partition gpt.bin
 fastboot flash bootloader bootloader.img
+fastboot flash modem NON-HLOS.bin
+fastboot flash fsg fsg.mbn
+fastboot erase modemst1
+fastboot erase modemst2
+fastboot flash dsp adspso.bin
 fastboot flash logo logo.bin
 fastboot flash boot boot.img
 fastboot flash recovery recovery.img
-fastboot flash dsp adspso.bin
-fastboot flash oem oem.img
 fastboot flash system system.img_sparsechunk.0
 fastboot flash system system.img_sparsechunk.1
 fastboot flash system system.img_sparsechunk.2
@@ -174,12 +180,10 @@ fastboot flash system system.img_sparsechunk.5
 fastboot flash system system.img_sparsechunk.6
 fastboot flash system system.img_sparsechunk.7
 fastboot flash system system.img_sparsechunk.8
-fastboot flash modem NON-HLOS.bin
-fastboot erase modemst1
-fastboot erase modemst2
-fastboot flash fsg fsg.mbn
+fastboot flash oem oem.img
 fastboot erase cache
 fastboot erase userdata
+fastboot erase DDR
 fastboot oem fb_mode_clear
 fastboot reboot
 ```
@@ -260,3 +264,4 @@ At this point, everything seems to be working beautifully for me and note that I
 6. A recovery is an operating system which is more functional than the bootloader but less functional than the Android OS, and which has the ability to "flash" software onto the various partitions of the phone and potentially do other things. A recovery is also capable of limited USB debugging and in particular can execute the `$ adb sideload` command, which is a way of flashing software onto device partitions without using the recovery UI.
 7. The XDA developer forums are gold mines but it can be hard to find the information you need via search engine. I recommend finding the forum topic or thread for your specific device and browsing from there.
 8. On the lolinet mirrors the short-forms like RETCA, RETLA, *etc.* seem to be "retail Canada", "retail Latvia", etc.
+9. On Motorola the `fb_mode_set` and `fb_mode_clear` commands just set, and clear, respectively, a flag that causes all reboots to automatically enter the bootloader. The idea is that when you're flashing the firmware, if you reboot the phone you want to come back to Fastboot mode, not attempt to boot something else like the main OS.
