@@ -98,3 +98,5 @@ Back in the recovery after reboot and:
 This was it for me.
 
 LineageOS completed the initial boot in 5–6 minutes and when it came back up, the IMEI numbers were back and the radio was working.
+
+Note that I never had to fuss with redoing the `fastboot erase modemst<N>` steps, other than in the firmware re-flash.
