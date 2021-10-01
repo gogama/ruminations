@@ -1,7 +1,11 @@
 Bulk loading
 ============
 
-## Definition
+1. [Definition](#1-definition)
+2. [Applicability](#2-applicability)
+3. [Conclusion](#3-conclusion)
+
+## 1. Definition
 
 Bulk loading is the process of generating a spatial data structure in
 a batch or offline mode, all at once, with full knowledge of all the
@@ -12,7 +16,7 @@ intended to act as a static index. Such a data structure need only
 satisfy searches and, in particular, is not expected to handle
 insertions or deletions.
 
-## Applicability
+## 2. Applicability
 
 ### Some data structures are vulnerable to degenerate cases 
 
@@ -62,7 +66,7 @@ approval and release cycle for its source dataset. Then for services
 based on this dataset, all data structures that search well when
 their construction is optimized during bulk load should be on the table.
 
-## Conclusion
+## 3. Conclusion
 
 When considering a data structure for building a geospatial service,
 be aware of whether your use case can (or even must) be satisfied by

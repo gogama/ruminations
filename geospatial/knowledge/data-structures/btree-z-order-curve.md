@@ -33,3 +33,6 @@ B-tree with Z-order
 ### <application>
 
 ## NoSQL Representation
+
+
+TODO: Note, the Amazon product *may* be covered in https://en.wikipedia.org/wiki/Hilbert_R-tree
