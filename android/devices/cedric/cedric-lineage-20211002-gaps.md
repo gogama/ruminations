@@ -14,7 +14,7 @@ Two major gaps have arisen that make LineageOS less usable for me than stock And
 1. Push notifications don't work.
 2. The device is totally unable to figure out its location, which renders navigation apps unusable.
 
-The broken push notifications started out as a minor flaw but are turning into a major 
+The lack of push notifications started out as a minor nuisance in the Signal app but are turning into a major annoyance because they break an application I need to use for my day job.
 
 ## Push Notifications (Gap #1)
 
