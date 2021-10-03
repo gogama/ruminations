@@ -61,8 +61,10 @@ I installed the cedric version of TWRP recover 3.5.2, by flashing to the recover
 
 ```
 $ fastboot flash recovery twrp-3.5.2_9-0-cedric.img
-$ fastboot reboot recovery
+$ fastboot reboot bootloader
 ```
+
+And from the bootloader, enter the recovery.
 
 **Differences from [cedric-lineage-20210923.md](cedric-lineage-20210923.md)**: I didn't use the Lineage recovery; I flashed the recovery partition and booted into it; and I unplugged the USB cable after flashing the recovery partition and before booting into it. 
 
