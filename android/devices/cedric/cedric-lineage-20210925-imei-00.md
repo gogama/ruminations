@@ -51,7 +51,7 @@ With my phone in the working-but-with-IMEI-0/0 state that I got it into at the e
 
 ### 1. Re-install most recent firmware.
 
-I re-flashed the firmware exactly as stipulated in [cedric-lineage-20210923.md](cedric-lineage-20210923.md).
+I re-flashed the firmware exactly as stipulated in [cedric-lineage-20210923-initial.md](cedric-lineage-20210923-initial.md).
 
 ### 2. Install freshest TWRP recovery (3.5.2).
 
