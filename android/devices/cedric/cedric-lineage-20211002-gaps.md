@@ -26,7 +26,7 @@ The first indication that something was awry with push notifications came when I
 
 I now realize this is because Signal uses push notifications to tell it when there are new messages it needs to phone home to collect, so that it doesn't have to waste battery polling. I read somewhere, and believe, that Signal uses push in a fairly secure manner: it basically sends an empty message to nudge it into waking up. No real user messages travel over push.
 
-![Screengrab from the device showing the "Background connection enabled" message](cedric-lineage-20211002-gaps-signal.png | height=640)
+<img src="cedric-lineage-20211002-gaps-signal.png" height="640"/>
 
 I could live with a slightly subpar Signal experience and an annoying sticky notification, but I now also realize that an app I need to run on the phone for work purposes depends on push to function properly. So there's no getting around it, I need to fix push on cedric.
 
