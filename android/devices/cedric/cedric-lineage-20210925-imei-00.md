@@ -1,4 +1,3 @@
-
 # Lineage on cedric, part 2 (fixing IMEI 0/0)
 
 - **Date**: 2021-09-25
