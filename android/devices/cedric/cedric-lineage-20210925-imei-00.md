@@ -44,7 +44,7 @@ With my phone in the working-but-with-IMEI-0/0 state that I got it into at the e
 1. Re-install most recent firmware.
 2. Install freshest TWRP recovery (3.5.2).
 3. Wipe data using TWRP.
-4. Install freshest LineageOS nightly build (2021-01-23).
+4. Install freshest LineageOS nightly build (2021-09-23).
 5. Profit.
 
 ## Blow-by-blow
@@ -89,10 +89,11 @@ Back in the recovery after reboot and:
 
 1. Plug in USB.
 2. Copy ROM ZIP archive  from laptop to device storage.
-3. Install via TWRP **Install** menu.
-4. Reboot when done.
+3. Unplug USB.
+4. Install via TWRP **Install** menu.
+5. Reboot when done.
 
-**Differences from [cedric-lineage-20210923.md](cedric-lineage-20210923.md)**: Used TWRP install instead of Lineage recovery install (in both cases did install by copying archive to device storage first); and used a slightly newer nightly build of LineageOS.
+**Differences from [cedric-lineage-20210923.md](cedric-lineage-20210923.md)**: Used TWRP install instead of Lineage recovery install (in both cases did install by copying archive to device storage first); used a slightly newer nightly build of LineageOS; superstitious plugging and unplugging of the USB cable.
 
 ### 5. Profit.
 
