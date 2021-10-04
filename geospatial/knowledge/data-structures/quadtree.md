@@ -32,3 +32,8 @@ quadtree
 ### <application>
 
 ## NoSQL Representation
+
+## References
+
+- [How a quadtree works](https://ericandrewlewis.github.io/how-a-quadtree-works/) -
+  interactive website showing how a nearest neighbour search works in a quadtree.
