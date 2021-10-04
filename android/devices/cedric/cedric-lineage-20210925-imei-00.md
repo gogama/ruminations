@@ -102,3 +102,14 @@ This was it for me.
 LineageOS completed the initial boot in 5–6 minutes and when it came back up, the IMEI numbers were back, confirmed with secret sauce of dialing `*#06#`, the radio was working, and I could send/receive calls.
 
 Note that I never had to fuss with redoing the `fastboot erase modemst<N>` steps, other than in the firmware re-flash.
+
+## Afterword
+
+### 2021-10-03
+
+On 2021-10-03, I did a wide and clean reinstall to use the [LineageOS for microG](https://lineage.microg.org/) fork, that process is described in [cedric-lineage-20211003-microG.md](cedric-lineage-20211003-microG.md). During this process, I ran into IMEI 0/0 a bunch of times before getting it straight. Herewith a few notes:
+
+- I'm still not 100% sure what the critical step is - I haven't repeated working, and not working, variations enough to 100% convince myself that the process is deterministic.
+- However I will note that both on 2021-09-25 and 2021-10-03, one key variable that I changed both times that led to a working install without IMEI 0/0 was the LineageOS build. (On 2021-10-03, it was the LineageOS for microG build, but same idea.)
+- One other interesting note: on 2021-10-03, during the install cycle where I actually got it to work, I accidentally allowed the phone to boot into the stock Android ROM after flashing the stock firmware. And the stock Android install had IMEI 0/0! Then when I booted back into TWRP recovery and flashed LineageOS for microG and rebooted, IMEI 0/0 was fixed.
+- So there are multiple credible reasons to believe that my cedric is very sensitive to specific ROM builds: one nightly build may have the IMEI 0/0 problem, while the next build may fix it!
