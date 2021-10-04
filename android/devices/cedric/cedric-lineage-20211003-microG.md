@@ -1,4 +1,3 @@
-
 # Lineage on cedric, part 4 (using microG to fix push notifications)
 
 - **Date**: 2021-10-03
@@ -18,9 +17,10 @@
 
 I need push notifications to work for multiple reasons and decided microG is the answer. I decided the best way to get microG is to do a clean install of [LineageOS for microG ](https://lineage.microg.org/) 18.1 on my cedric, replacing the standard LineageOS 18.1 install I did successfully on 2021-09-25.
 
-See also:
+## See also
+
 - [cedric-lineage-20210925-imei-00.md](cedric-lineage-20210925-imei-00.md) - Explaining how I successfully did the standard LineageOS 18.1 install, defeating the dreaded IMEI 0/0 problem.
-- [cedric-lineage-20211002-gaps.md](cedric-lineage-20211002-gaps.md) - Explaining my decision to go with LineageOS for microG.
+- [cedric-lineage-20211002-gaps.md](cedric-lineage-20211002-gaps.md) - Explaining my decision to go with LineageOS for microG because of LineageOS gaps I can't live with, specifically broken push notifications.
 
 ## Process
 
@@ -39,6 +39,7 @@ microG works just fine. My push notifications are fixed, and in particular both 
 
 ### More IMEI 0/0 issues
 
-- I ran into the IMEI 0/0 problem multiple times in the install process.
-- It seems to me that the most likely cause was the OS build/ZIP version. For example, I installed `lineage-18.1-20211002-microG-cedric.zip` (SHA256 `3221ab3805b4f0f3037dd7d1d0fc89edd54119220c68f808e6e361c51c3dbb0c`) multiple times but each time I booted into LineageOS after installing it, I had IMEI 0/0. The first time I installed the 20210914 build it worked!
-- This suggests to me that the IMEI 0/0 is very ROM version/build sensitive and the correct approach to debugging IMEI 0/0 is to keep trying build versions until one works.
+I ran into the IMEI 0/0 problem multiple times during this install process. I think there is a good chance they are caused (and fixed) by the custom ROM, *i.e.* the Lineage or Lineage for microG install ZIP. It seems likely that whatever manages the IMEI on cedric is very sensitive and that some builds of the ZIP break it or misconfigure it, while other builds of the same software work just fine.
+
+- For example, I installed `lineage-18.1-20211002-microG-cedric.zip` (SHA256 `3221ab3805b4f0f3037dd7d1d0fc89edd54119220c68f808e6e361c51c3dbb0c`) multiple times but each time I booted into LineageOS after installing it, I had IMEI 0/0. The first time I installed the 20210914 build it worked!
+- This suggests to me that the correct approach to debugging IMEI 0/0 is to keep trying build versions until one works.
