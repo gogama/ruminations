@@ -5,12 +5,13 @@ Minimal framework for useful Lambda functions in GoLang, both for the
 synchronous request/response use case and the asynchronous use case.
 
 - Logging and metrics:
-    - ~~**aws-embedded-metrics-go** - A decent job is already done with
+    - ~~**aws-embedded-metrics-go** - ~~A decent job is already done with
       https://github.com/prozz/aws-embedded-metrics-golang but it
       depends on `encoding/json` for marshaling whereas Zap's marshaling
       is a lot more efficient. Also has weird ergonomics in terms of
       pushing some default values on you. Could theoretically be redone
-      using `zap/zapcore`, basically using `NewJSONEncoder`. Worth it?
+      using `zap/zapcore`, basically using `NewJSONEncoder`. Worth it?~~
+      I think it should be redone dependency-free. No Zap, no `encoding/json`.
     - **structlog** - ~~Minimal footprint package for structured
       logging, with separation of concerns, but geared at total
       simplicity.~~ Already available in [Zap](https://github.com/uber-go/zap)
