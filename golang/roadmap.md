@@ -19,8 +19,8 @@ synchronous request/response use case and the asynchronous use case.
       reasonable method name and better performance, and also note that
       Zap has its own minimal-reflection, minimal allocation, JSON
 - Lambda framework:
-    - **spigot** - Core Lambda framework library with small footprint
-      support for:
+    - **spigot** or maybe **skeleton** - Core Lambda framework library
+      with small footprint support for:
         - a request context that doesn't use the noun "context" and
           which contains a GoLang context and access to:
             - metrics
@@ -41,6 +41,8 @@ synchronous request/response use case and the asynchronous use case.
               and it will invoke that "service" with a context once
               the spigot opens.
 - Smithy framework:
+   - **smithy-parser-go** - Very simple Smithy model parser, with
+     minimal if any semantic validation.
    - **smithy-shapegen-go** - Generate Go structures, validation code,
      *etc.* from Smithy model.
             - no, or minimal, pointers;
@@ -54,3 +56,12 @@ synchronous request/response use case and the asynchronous use case.
 After that, a general purpose framework for monitor setup that works
 equally simply in a basic project with one CloudFormation stack in one
 AWS account and scales to hundreds of stacks and hundreds of accounts.
+
+## Tools
+
+- Very simple parser generator, which is all that's needed for a Smithy
+  code generator:
+    - https://github.com/alecthomas/participle 
+- Frameworks to generate static JSON serializer/deserializer:
+    - https://github.com/mailru/easyjson (seems like the better bet)
+    - https://github.com/pquerna/ffjson (less less impressive than ffjson)
