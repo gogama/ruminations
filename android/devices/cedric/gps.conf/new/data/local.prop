@@ -1,0 +1,35 @@
+###############################################################
+# file:   local.prop
+# date:   2021-10-31
+# author: Victor Schappert
+#
+# If placed at the path "/data/local.prop" with read-only
+# permissions, this file will elevate the log levels of
+# various tags that are part of the Location and Location/GNSS
+# subsystems.
+#
+# I have seen it claimed that `local.prop` should have only
+# read-only permissions so I always `chmod` it to 444.
+#
+# You can verify if the tags were read by running
+#
+#     $ adb shell getprop | grep log.tag
+
+
+# Location classes in system_server process.
+
+log.tag.LocationManagerService=V
+log.tag.GnssConfiguration=V
+log.tag.GnssManager=V
+log.tag.GnssLocationProvider=V
+
+# I have not found a way to produce debug/verbose logs
+# of tags for the C++ components in the Qualcomm HAL
+# code, e.g. `LocSvc_utils_cfg`. As far as I can tell,
+# the only way to do this is to set DEBUG_LEVEL >= 4
+# in `/vendor/etc/gps.conf`, which obviously only takes
+# effect AFTER the `gps.conf` is loaded. This produces
+# a slightly annoying scenario where it's hard to the
+# point of impossible to get GNSS HAL logs for anything
+# that happens before `gps.conf` is loaded. And even,
+# the logs leave something to be desired!
